@@ -43,6 +43,8 @@ First stage (25.08.2019) - will be done preparation stage and basis of the game
 Second stage (5.09.2019) - will be implemented working prototype and finished final version
 
 ## References
-[https://www.w3schools.com]
-[https://developer.mozilla.org/ru/docs/Learn/JavaScript/Первые_шаги]
-[http://learn.javascript.ru]
+https://www.w3schools.com
+
+https://developer.mozilla.org/ru/docs/Learn/JavaScript/Первые_шаги
+
+http://learn.javascript.ru
