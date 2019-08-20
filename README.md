@@ -19,11 +19,11 @@
 ## Stages of implementation
 
 * Preparation stage
-- [ ] Find icons of blocks, boxes, hero, and enemies
+- [x] Find icons of blocks, boxes, hero, and enemies
 - [ ] Write HTML and CSS basis of the game
 
 * Basis of the game
-- [ ] Randomly create a field which consists of blocks and boxes
+- [x] Randomly create a field which consists of blocks and boxes
 - [ ] Add to the filed hero and enemy
 - [ ] Make them possible to move through playing filed
 
