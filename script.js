@@ -7,10 +7,10 @@
 
         this.htmlElement = document.createElement('div');
 
-        this.htmlElement.style.gridColumnStart = x + 1;
-        this.htmlElement.style.gridColumnEnd = x + 2;
-        this.htmlElement.style.gridRowStart = y + 1;
-        this.htmlElement.style.gridRowEnd = y + 2;
+        this.htmlElement.style.gridColumnStart = y + 1;
+        this.htmlElement.style.gridColumnEnd = y + 2;
+        this.htmlElement.style.gridRowStart = x + 1;
+        this.htmlElement.style.gridRowEnd = x + 2;
     }
 
     function Grass(x, y) {
@@ -44,37 +44,48 @@
         this.htmlElement.className = 'top-wall';
     }
 
-
-    function CreateField() {
-        var field = document.getElementsByClassName('playing-field')[0];
-
-        for (var i=0; i < 12; i++){
-            for (var j=0; j<12; j++){
-
-                if (i === 0 || i === 11){
-                    if (j !== 11){
-                        var element = new LeftRigthWall(i, j);
-
-                    }
-                    else {
-                        var element = new TopDownWall(i, j);
-                    }
-                }
-
-                else if ((j === 0  || j === 11) && (i > 0 && i < 11)){
-                    var element = new TopDownWall(i, j);
-                }
-
-                else{
-                    var element = new Grass(i, j);
-                }
-
-                field.appendChild(element.htmlElement);
-            }
+    function typeToBlock(type, x, y) {
+        if (type === 0){
+            var block = new LeftRigthWall(x, y);
         }
+        else if (type === 1){
+            var block = new TopDownWall(x, y);
+        }
+        else if (type === 2){
+            var block = new Grass(x, y);
+        }
+        else if (type === 3){
+            var block = new LightBlock(x, y);
+        }
+        else if (type === 4){
+            var block = new StrongBlock(x, y);
+        }
+        else if (type === 5){
+            var block = new Box(x, y);
+        }
+
+        return block;
 
     }
 
-    CreateField();
-    
+
+    function CreatePlayingField(playingMap) {
+        var field = document.getElementsByClassName('playing-field')[0];
+        for (var i = 0; i < playingMap.length; i++) {
+            for (var j = 0; j < playingMap[i].length; j++) {
+                var element = typeToBlock(playingMap[i][j], i, j);
+                field.appendChild(element.htmlElement);
+            }
+        }
+    }
+
+
+    function Game() {
+        var maps = [map1, map2];
+        var indx = Math.floor(Math.random() * maps.length);
+        CreatePlayingField(maps[indx])
+    }
+
+    Game(); 
+
 })();
