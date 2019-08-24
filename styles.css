@@ -1,7 +1,5 @@
 .playing-field {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(12, 1fr) ;
+    position: relative;
     height: 600px;
     width: 600px;
     border: 5px solid red;
@@ -9,27 +7,53 @@
 }
 
 
-
-.grass{
+.grass {
+    position: absolute;
+    height: 50px;
+    width: 50px;
     background: url("imgs/grass-2.png");
+    z-index: 2;
 }
 
-.strong-block{
+.strong-block {
+    height: 50px;
+    width: 50px;
+    position: absolute;
     background: url("imgs/strong-block.png");
 }
 
-.light-block{
+.light-block {
+    height: 50px;
+    width: 50px;
+    position: absolute;
     background: url("imgs/light-block.png");
 }
 
-.box{
+.box {
+    height: 50px;
+    width: 50px;
+    position: absolute;
     background: url("imgs/box.png");
 }
 
-.left-wall{
+.left-wall {
+    height: 50px;
+    width: 50px;
+    position: absolute;
     background: url("imgs/left-wall.png");
 }
 
-.top-wall{
+.top-wall {
+    height: 50px;
+    width: 50px;
+    position: absolute;
     background: url("imgs/wall.png");
+}
+
+.bomberman {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    background: url("imgs/bomberman.png");
+    z-index: 1000;
 }
