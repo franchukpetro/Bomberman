@@ -24,8 +24,8 @@
 
 * Basis of the game
 - [x] Randomly create a field which consists of blocks and boxes
-- [ ] Add to the filed hero and enemy
-- [ ] Make them possible to move through playing filed
+- [x] Add to the filed hero and enemy
+- [x] Make them possible to move through playing filed
 
 * Working prototype
 - [ ] Bomberman dies from touching enemies
