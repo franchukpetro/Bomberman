@@ -12,7 +12,6 @@
     height: 50px;
     width: 50px;
     background: url("imgs/grass-2.png");
-    z-index: 2;
 }
 
 .strong-block {
@@ -55,5 +54,29 @@
     width: 50px;
     position: absolute;
     background: url("imgs/bomberman.png");
-    z-index: 1000;
+    z-index: 3;
+}
+
+.enemy {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    background: url("imgs/enemy.png");
+    z-index: 3;
+}
+
+.bomb {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    background: url("imgs/bomb.png");
+    z-index: 3;
+}
+
+.explosion {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    background: url("imgs/explosion.png");
+    z-index: 3;
 }
