@@ -20,7 +20,7 @@
 
 * Preparation stage
 - [x] Find icons of blocks, boxes, hero, and enemies
-- [ ] Write HTML and CSS basis of the game
+- [x] Write HTML and CSS basis of the game
 
 * Basis of the game
 - [x] Randomly create a field which consists of blocks and boxes
@@ -28,9 +28,9 @@
 - [x] Make them possible to move through playing filed
 
 * Working prototype
-- [ ] Bomberman dies from touching enemies
-- [ ] Make Bomberman possible to plant a bomb
-- [ ] Bomb destroys boxes and blocks and kills enemies
+- [x] Bomberman dies from touching enemies
+- [x] Make Bomberman possible to plant a bomb
+- [x] Bomb destroys boxes and blocks and kills enemies
 
 * Final version
 - [ ] After the end of round player can select between next round and new game
@@ -49,3 +49,7 @@ https://www.w3schools.com
 https://developer.mozilla.org/ru/docs/Learn/JavaScript/Первые_шаги
 
 http://learn.javascript.ru
+
+http://softwaremaniacs.org/blog/category/primer/
+
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/
