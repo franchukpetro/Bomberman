@@ -12,6 +12,7 @@
 
         this.enemiesAmount = enemiesAmount;
         this.enemies = [];
+        this.powerUps = [];
 
         this.placeEnemies = function () {
             var respawns = [];
@@ -89,6 +90,7 @@
         this.htmlElement.style.left = this.y * 50 + 'px';
 
         this.remove = function () {
+            this.htmlElement.className = 'grass';
         }
     }
 
@@ -117,7 +119,7 @@
         this.htmlElement.className = 'box';
 
         this.remove = function () {
-            this.htmlElement.className = 'grass';
+            this.htmlElement.className = 'new_bomb'
         }
     }
 
@@ -133,11 +135,21 @@
 
     function Bomb(x, y) {
         Block.call(this, x, y);
-        this.htmlElement.className = 'bomb'
+        this.htmlElement.className = 'bomb';
 
         this.remove = function () {
             this.htmlElement.className = 'grass'
         }
+    }
+
+
+    function NewBomb(x, y) {
+        Block.call(this, x, y);
+        this.htmlElement.className = 'new-bomb';
+
+        this.remove = function () {
+            this.htmlElement.className = 'grass';
+        };
     }
 
     function Explosion(x, y) {
@@ -206,19 +218,25 @@
         Personage.call(this, x, y);
         this.htmlElement.className = 'bomberman';
         this.alive = true;
+        this.bombs_number = 5;
 
         this.die = function () {
             this.alive = false;
-            console.log("You died!!");
         };
 
+
         this.plantBomb = async function (field) {
+            if (this.bombs_number < 1){
+                return 0;
+            }
+            this.bombs_number -= 1;
             var bomb = new Bomb(this.x, this.y);
             field.field.appendChild(bomb.htmlElement);
             await sleep(2000);
 
             var sides = [[bomb.x, bomb.y - 1], [bomb.x - 1, bomb.y], [bomb.x, bomb.y + 1], [bomb.x + 1, bomb.y]];
             var damagedSides = [];
+
 
 
             for (var s = 0; s < sides.length; s++) {
@@ -238,15 +256,33 @@
 
             var exps = []
             for (var i = 0; i < damagedSides.length; i++) {
-                field.remove(field.elements[damagedSides[i][0]][damagedSides[i][1]]);
-                var exp = new Explosion(damagedSides[i][0], damagedSides[i][1]);
-                field.field.appendChild(exp.htmlElement);
-                exps.push(exp);
+
+                if (field.map[damagedSides[i][0]][damagedSides[i][1]] === 5){
+                    field.remove(field.elements[damagedSides[i][0]][damagedSides[i][1]]);
+                    var exp = new Explosion(damagedSides[i][0], damagedSides[i][1]);
+                    field.field.appendChild(exp.htmlElement);
+                    exps.push(exp);
+
+                    var b = new NewBomb(damagedSides[i][0], damagedSides[i][1]);
+                    field.field.appendChild(b.htmlElement);
+                    field.powerUps.push(b);
+
+
+
+                }else{
+                    field.remove(field.elements[damagedSides[i][0]][damagedSides[i][1]]);
+                    var exp = new Explosion(damagedSides[i][0], damagedSides[i][1]);
+                    field.field.appendChild(exp.htmlElement);
+                    exps.push(exp);
+                }
+
             }
+
             bomb.remove();
             var exp = new Explosion(bomb.x, bomb.y);
-            field.field.appendChild(exp.htmlElement)
+            field.field.appendChild(exp.htmlElement);
             exps.push(exp);
+
 
             await sleep(750);
             for (var j = 0; j < exps.length; j++) {
@@ -255,6 +291,8 @@
 
         }
     }
+
+
 
 
     function Enemy(x, y) {
@@ -342,6 +380,15 @@
         document.addEventListener('keydown', event => {
             const key = event.key;
             field.bomberman.move(key, field.map);
+
+            for (var p=0; p < field.powerUps.length; p++){
+                if (field.bomberman.x === field.powerUps[p].x && field.bomberman.y === field.powerUps[p].y){
+                    field.powerUps[p].remove();
+                    field.powerUps.splice(p, 1);
+                    field.bomberman.bombs_number += 1;
+                }
+            }
+
         });
 
         document.addEventListener('keydown', event => {

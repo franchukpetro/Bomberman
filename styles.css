@@ -1,9 +1,37 @@
+body{
+    background: antiquewhite;
+}
+
+
 .playing-field {
     position: relative;
     height: 600px;
     width: 600px;
-    border: 5px solid red;
-    margin: 75px auto;
+    margin: auto;
+}
+
+.game_info {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0 10px 0;
+}
+
+.bombs_number{
+    height: 50px;
+    width: 300px;
+    margin: 5px;
+    background: grey;
+    border: 3px solid black;
+    border-radius: 5px;
+}
+
+.level{
+    height: 50px;
+    width: 300px;
+    margin: 5px;
+    background: grey;
+    border: 3px solid black;
+    border-radius: 5px;
 }
 
 
@@ -70,6 +98,14 @@
     width: 50px;
     position: absolute;
     background: url("imgs/bomb.png");
+    z-index: 3;
+}
+
+.new-bomb{
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    background: url("imgs/new_bomb.png");
     z-index: 3;
 }
 
