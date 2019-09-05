@@ -35,7 +35,7 @@
 * Final version
 - [X] After the end of round player can select between next round and new game
 - [X] Start menu is implemented
-- [ ] Code refactoring
+- [X] Code refactoring
 
 
 ## Deadlines
