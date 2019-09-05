@@ -11,8 +11,8 @@
 * After killing all enemies player can continue playing **next round** or start **new game**
 * Bomberman **dies** if any of the enemies touch him and then the game is over
 * At the beginning of each round all enemies, blocks and boxes are placed **randomly**
-* At the first round player has **5 bombs**, each 2 rounds number of bombs will **decrease** by one bomb until it will reach 1
-* At the first round there are **2 enemies** on the field, each 2 rounds number of enemies will **increase** by one until it will reach 10
+* At the first round player has **5 bombs**, each round number of bombs will **decrease** by one bomb until it will reach 1
+* At the first round there are **2 enemies** on the field, each round number of enemies will **increase** by one until it will reach 5
 * Playing field consist of blocks that **can not** be destroyed and blocks that **can** be destroyed using bomb; 2 boxes, where are additional bombs
 
 
@@ -33,8 +33,8 @@
 - [x] Bomb destroys boxes and blocks and kills enemies
 
 * Final version
-- [ ] After the end of round player can select between next round and new game
-- [ ] Start menu is implemented
+- [X] After the end of round player can select between next round and new game
+- [X] Start menu is implemented
 - [ ] Code refactoring
 
 
