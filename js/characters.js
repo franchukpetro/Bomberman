@@ -1,3 +1,4 @@
+// Basic class for characters
 function Personage(x, y) {
     this.htmlElement = document.createElement('div');
 
@@ -22,7 +23,7 @@ function Personage(x, y) {
     this.moveDown = function () {
         this.htmlElement.style.top = Number(this.htmlElement.style.top.slice(0, -2)) + 50 + "px"
     };
-
+    // according to the key, which was pressed, character will move in one of 4 directions
     this.move = function (key, map) {
         if (key === "ArrowLeft" || key === "a") {
             if ((this.y > 1) && (map[this.x][this.y - 1] === 2)) {
@@ -35,12 +36,12 @@ function Personage(x, y) {
                 this.x -= 1;
             }
         } else if (key === "ArrowRight" || key === "d") {
-            if ((this.y < 10) && (map[this.x][this.y + 1] === 2)) {
+            if ((this.y < 11) && (map[this.x][this.y + 1] === 2)) {
                 this.moveRight();
                 this.y += 1;
             }
         } else if (key === "ArrowDown" || key === "s") {
-            if ((this.x < 10) && (map[this.x + 1][this.y] === 2)) {
+            if ((this.x < 11) && (map[this.x + 1][this.y] === 2)) {
                 this.moveDown();
                 this.x += 1;
             }
@@ -62,27 +63,31 @@ function Bomberman(x, y, bombs_number) {
 
 
     this.plantBomb = async function (field) {
-        if (this.bombs_number < 1){
+        // blocks planting when number of bombs is zero
+        if (this.bombs_number < 1) {
             return 0;
         }
+
         this.bombs_number -= 1;
-        var bomb = new Bomb(this.x, this.y);
+        let bomb = new Bomb(this.x, this.y);
         field.field.appendChild(bomb.htmlElement);
+        // time before explosion
         await sleep(2000);
 
-        var sides = [[bomb.x, bomb.y - 1], [bomb.x - 1, bomb.y], [bomb.x, bomb.y + 1], [bomb.x + 1, bomb.y]];
-        var damagedSides = [];
+        // possibly damaged sides
+        let sides = [[bomb.x, bomb.y - 1], [bomb.x - 1, bomb.y], [bomb.x, bomb.y + 1], [bomb.x + 1, bomb.y]];
+        let damagedSides = [];
 
 
-
-        for (var s = 0; s < sides.length; s++) {
-            var side = field.map[sides[s][0]][sides[s][1]];
+        for (let s = 0; s < sides.length; s++) {
+            let side = field.map[sides[s][0]][sides[s][1]];
             if ((side === 2) || (side === 3) || (side === 5)) {
                 damagedSides.push(sides[s]);
             }
 
-            for (var e = 0; e < field.enemies.length; e++) {
+            for (let e = 0; e < field.enemies.length; e++) {
                 if ((field.enemies[e].x === sides[s][0]) && (field.enemies[e].y === sides[s][1])) {
+                    // "kills" enemy if it was in damaged side
                     field.enemies[e].remove();
                     field.enemies.splice(e, 1);
 
@@ -90,49 +95,47 @@ function Bomberman(x, y, bombs_number) {
             }
         }
 
-        var exps = []
-        for (var i = 0; i < damagedSides.length; i++) {
-
-            if ((damagedSides[i][0] === this.x) && (damagedSides[i][1] === this.y)){
+        let exps = [];
+        for (let i = 0; i < damagedSides.length; i++) {
+            // kills Bomberman if it was in damaged side
+            if ((damagedSides[i][0] === this.x) && (damagedSides[i][1] === this.y)) {
                 this.die();
             }
 
-            if (field.map[damagedSides[i][0]][damagedSides[i][1]] === 5){
+            if (field.map[damagedSides[i][0]][damagedSides[i][1]] === 5) {
+                // append explosions to the field
                 field.remove(field.elements[damagedSides[i][0]][damagedSides[i][1]]);
-                var exp = new Explosion(damagedSides[i][0], damagedSides[i][1]);
+                let exp = new Explosion(damagedSides[i][0], damagedSides[i][1]);
                 field.field.appendChild(exp.htmlElement);
                 exps.push(exp);
 
-                var b = new NewBomb(damagedSides[i][0], damagedSides[i][1]);
+                // appends bomb instead of destroyed box
+                let b = new NewBomb(damagedSides[i][0], damagedSides[i][1]);
                 field.field.appendChild(b.htmlElement);
                 field.powerUps.push(b);
 
 
-
-            }else{
+            } else {
                 field.remove(field.elements[damagedSides[i][0]][damagedSides[i][1]]);
-                var exp = new Explosion(damagedSides[i][0], damagedSides[i][1]);
+                let exp = new Explosion(damagedSides[i][0], damagedSides[i][1]);
                 field.field.appendChild(exp.htmlElement);
                 exps.push(exp);
             }
 
         }
 
-        if ((bomb.x === this.x) && (bomb.y === this.y)){
+        if ((bomb.x === this.x) && (bomb.y === this.y)) {
             this.die();
         }
 
         bomb.remove();
-        var exp = new Explosion(bomb.x, bomb.y);
+        let exp = new Explosion(bomb.x, bomb.y);
         field.field.appendChild(exp.htmlElement);
         exps.push(exp);
 
-
-
-
-
+        // wait some time  for explosions to disappear
         await sleep(750);
-        for (var j = 0; j < exps.length; j++) {
+        for (let j = 0; j < exps.length; j++) {
             exps[j].remove();
         }
 
@@ -140,14 +143,13 @@ function Bomberman(x, y, bombs_number) {
 }
 
 
-
-
 function Enemy(x, y) {
     Personage.call(this, x, y);
     this.htmlElement.className = 'enemy';
 
+    // determines possible ways to move in next step
     this.determineDirection = function (map) {
-        var possibleDirections = [];
+        let possibleDirections = [];
 
         if ((this.y > 1) && (map[this.x][this.y - 1] === 2)) {
             possibleDirections.push("a");
@@ -167,13 +169,14 @@ function Enemy(x, y) {
 
         return possibleDirections[Math.floor(Math.random() * possibleDirections.length)]
 
-    }
+    };
 
+    // kills Bomberman with touching him
     this.checkBomberman = function (bomberman) {
         if ((this.x === bomberman.x) && (this.y === bomberman.y)) {
             bomberman.die();
         }
-    }
+    };
 
     this.remove = function () {
         this.htmlElement.className = 'grass';

@@ -1,13 +1,13 @@
-body{
+body {
     background: #b2bec3;
 }
 
-.wrapper{
+.wrapper {
     display: flex;
     flex-direction: column;
 }
 
-.logo{
+.logo {
     width: 660px;
     height: 183px;
     margin: auto;
@@ -20,7 +20,7 @@ body{
 }
 
 
-.bombs_number{
+.bombs_number {
     height: 50px;
     width: 300px;
     margin: 5px;
@@ -29,7 +29,7 @@ body{
     border-radius: 5px;
 }
 
-.level{
+.level {
     height: 50px;
     width: 300px;
     margin: 5px;
@@ -38,7 +38,7 @@ body{
     border-radius: 5px;
 }
 
-.button{
+.button {
     width: 150px;
     height: 50px;
     border: black solid 2px;
@@ -49,8 +49,8 @@ body{
 
 .playing-field {
     position: relative;
-    height: 600px;
-    width: 600px;
+    height: 650px;
+    width: 650px;
     margin: auto;
 }
 
@@ -121,7 +121,7 @@ body{
     z-index: 3;
 }
 
-.new-bomb{
+.new-bomb {
     height: 50px;
     width: 50px;
     position: absolute;

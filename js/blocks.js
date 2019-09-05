@@ -1,3 +1,4 @@
+// Main  among all blocks, all other inherits properties and methods from it
 function Block(x, y) {
 
     this.htmlElement = document.createElement('div');
@@ -5,6 +6,7 @@ function Block(x, y) {
     this.x = x;
     this.y = y;
 
+    //positioning block using "coordinates"s
     this.htmlElement.style.top = this.x * 50 + 'px';
     this.htmlElement.style.left = this.y * 50 + 'px';
 
