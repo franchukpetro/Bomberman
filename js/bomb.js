@@ -1,5 +1,8 @@
 // Bomb that can be planted by Bomberman
-function Bomb(x, y) {
+
+import {Block} from "./blocks";
+
+export function Bomb(x, y) {
     Block.call(this, x, y);
     this.htmlElement.className = 'bomb';
 
@@ -9,13 +12,13 @@ function Bomb(x, y) {
 }
 
 // Bomb that can be picked up by Bomberman
-function NewBomb(x, y) {
+export function NewBomb(x, y) {
     Block.call(this, x, y);
     this.htmlElement.className = 'new-bomb';
 }
 
 // Explosion, which appears after bomb was planted by Bomberman
-function Explosion(x, y) {
+export function Explosion(x, y) {
     Block.call(this, x, y);
     this.htmlElement.className = 'explosion';
 }

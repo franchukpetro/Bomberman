@@ -1,0 +1,26 @@
+{
+  "name": "bomberman",
+  "version": "1.0.0",
+  "description": "### This is a project about creating game Bomberman",
+  "main": "js/main.js",
+  "scripts": {
+    "dev": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/franchukpetro/Bomberman.git"
+  },
+  "author": "Franchuk Petro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/franchukpetro/Bomberman/issues"
+  },
+  "homepage": "https://github.com/franchukpetro/Bomberman#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "webpack": "^4.39.3"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.8"
+  }
+}

@@ -1,5 +1,5 @@
 // Main  among all blocks, all other inherits properties and methods from it
-function Block(x, y) {
+export function Block(x, y) {
 
     this.htmlElement = document.createElement('div');
 
@@ -15,33 +15,33 @@ function Block(x, y) {
     }
 }
 
-function Grass(x, y) {
+export function Grass(x, y) {
     Block.call(this, x, y);
     this.htmlElement.className = 'grass';
 }
 
-function LightBlock(x, y) {
+export function LightBlock(x, y) {
     Block.call(this, x, y);
     this.htmlElement.className = 'light-block';
 }
 
 
-function StrongBlock(x, y) {
+export function StrongBlock(x, y) {
     Block.call(this, x, y);
     this.htmlElement.className = 'strong-block';
 }
 
-function Box(x, y) {
+export function Box(x, y) {
     Block.call(this, x, y);
     this.htmlElement.className = 'box';
 }
 
-function LeftRightWall(x, y) {
+export function LeftRightWall(x, y) {
     Block.call(this, x, y);
     this.htmlElement.className = 'left-wall';
 }
 
-function TopDownWall(x, y) {
+export function TopDownWall(x, y) {
     Block.call(this, x, y);
     this.htmlElement.className = 'top-wall';
 }

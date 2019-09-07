@@ -1,5 +1,7 @@
 // Basic class for characters
-function Personage(x, y) {
+import {Bomb, Explosion, NewBomb} from "./bomb";
+
+export function Personage(x, y) {
     this.htmlElement = document.createElement('div');
 
     this.x = x;
@@ -51,7 +53,7 @@ function Personage(x, y) {
 }
 
 
-function Bomberman(x, y, bombs_number) {
+export function Bomberman(x, y, bombs_number) {
     Personage.call(this, x, y);
     this.htmlElement.className = 'bomberman';
     this.bombs_number = bombs_number;
@@ -143,7 +145,7 @@ function Bomberman(x, y, bombs_number) {
 }
 
 
-function Enemy(x, y) {
+export function Enemy(x, y) {
     Personage.call(this, x, y);
     this.htmlElement.className = 'enemy';
 

@@ -1,4 +1,8 @@
 // Class of playing field
+import {map1, map2, map3, map4} from "./maps";
+import {Bomberman, Enemy} from "./characters";
+import {Box, Grass, LeftRightWall, LightBlock, StrongBlock, TopDownWall} from "./blocks";
+
 function Field(map, enemiesAmount, bomberman) {
     this.field = document.getElementsByClassName('playing-field')[0];
     // array with numbers
@@ -50,7 +54,7 @@ function Field(map, enemiesAmount, bomberman) {
         }
 
         while (this.enemies.length) {
-            for (i = 0; i < this.enemies.length; i++) {
+            for (let i = 0; i < this.enemies.length; i++) {
                 // in each move check whether there are Bomberman in that position
                 this.enemies[i].checkBomberman(this.bomberman);
                 this.enemies[i].move(this.enemies[i].determineDirection(this.map), this.map);
@@ -61,7 +65,7 @@ function Field(map, enemiesAmount, bomberman) {
 
     this.addBomberman = function () {
         this.field.appendChild(this.bomberman.htmlElement);
-    }
+    };
 
 
     this.createField = function () {
