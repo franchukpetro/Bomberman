@@ -156,7 +156,7 @@ function Game(level) {
         const key = event.key;
         if (key === " ")
             field.bomberman.plantBomb(field);
-        bombs_num.innerHTML = "Bombs number: " + field.bomberman.bombs_number;
+        bombs_score.innerHTML = "Bombs number: " + field.bomberman.bombs_number;
     });
 
 }

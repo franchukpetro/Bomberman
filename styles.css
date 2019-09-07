@@ -1,39 +1,3 @@
-.playing-field {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(12, 1fr) ;
-    height: 600px;
-    width: 600px;
-    border: 5px solid red;
-    margin: 75px auto;
-}
-
-
-
-.grass{
-    background: url("imgs/grass-2.png");
-}
-
-.strong-block{
-    background: url("imgs/strong-block.png");
-}
-
-.light-block{
-    background: url("imgs/light-block.png");
-}
-
-.box{
-    background: url("imgs/box.png");
-}
-
-.left-wall{
-    background: url("imgs/left-wall.png");
-}
-
-.top-wall{
-    background: url("imgs/wall.png");
-}
-
 body {
     background: #b2bec3;
 }
